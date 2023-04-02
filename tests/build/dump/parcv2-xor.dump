@@ -1,0 +1,271 @@
+
+bin/parcv2-xor:     file format elf32-littlemips
+
+
+Disassembly of section .text:
+
+00080000 <_test>:
+   80000:	3c02ff00 	lui	v1,0xff00
+   80004:	3442ff00 	ori	v1,v1,0xff00
+   80008:	3c030f0f 	lui	a0,0xf0f
+   8000c:	34630f0f 	ori	a0,a0,0xf0f
+   80010:	00432026 	xor	a1,v1,a0
+   80014:	241d000d 	li	sp,13
+   80018:	3c1ef00f 	lui	at,0xf00f
+   8001c:	37def00f 	ori	at,at,0xf00f
+   80020:	149e00d0 	bne	a1,at,80364 <_fail>
+   80024:	3c020ff0 	lui	v1,0xff0
+   80028:	34420ff0 	ori	v1,v1,0xff0
+   8002c:	3c03f0f0 	lui	a0,0xf0f0
+   80030:	3463f0f0 	ori	a0,a0,0xf0f0
+   80034:	00432026 	xor	a1,v1,a0
+   80038:	241d000e 	li	sp,14
+   8003c:	3c1eff00 	lui	at,0xff00
+   80040:	37deff00 	ori	at,at,0xff00
+   80044:	149e00c7 	bne	a1,at,80364 <_fail>
+   80048:	3c0200ff 	lui	v1,0xff
+   8004c:	344200ff 	ori	v1,v1,0xff
+   80050:	3c030f0f 	lui	a0,0xf0f
+   80054:	34630f0f 	ori	a0,a0,0xf0f
+   80058:	00432026 	xor	a1,v1,a0
+   8005c:	241d000f 	li	sp,15
+   80060:	3c1e0ff0 	lui	at,0xff0
+   80064:	37de0ff0 	ori	at,at,0xff0
+   80068:	149e00be 	bne	a1,at,80364 <_fail>
+   8006c:	3c02f00f 	lui	v1,0xf00f
+   80070:	3442f00f 	ori	v1,v1,0xf00f
+   80074:	3c03f0f0 	lui	a0,0xf0f0
+   80078:	3463f0f0 	ori	a0,a0,0xf0f0
+   8007c:	00432026 	xor	a1,v1,a0
+   80080:	241d0010 	li	sp,16
+   80084:	3c1e00ff 	lui	at,0xff
+   80088:	37de00ff 	ori	at,at,0xff
+   8008c:	149e00b5 	bne	a1,at,80364 <_fail>
+   80090:	3c02ff00 	lui	v1,0xff00
+   80094:	3442ff00 	ori	v1,v1,0xff00
+   80098:	3c030f0f 	lui	a0,0xf0f
+   8009c:	34630f0f 	ori	a0,a0,0xf0f
+   800a0:	00431026 	xor	v1,v1,a0
+   800a4:	241d0016 	li	sp,22
+   800a8:	3c1ef00f 	lui	at,0xf00f
+   800ac:	37def00f 	ori	at,at,0xf00f
+   800b0:	145e00ac 	bne	v1,at,80364 <_fail>
+   800b4:	3c02ff00 	lui	v1,0xff00
+   800b8:	3442ff00 	ori	v1,v1,0xff00
+   800bc:	3c030f0f 	lui	a0,0xf0f
+   800c0:	34630f0f 	ori	a0,a0,0xf0f
+   800c4:	00431826 	xor	a0,v1,a0
+   800c8:	241d0017 	li	sp,23
+   800cc:	3c1ef00f 	lui	at,0xf00f
+   800d0:	37def00f 	ori	at,at,0xf00f
+   800d4:	147e00a3 	bne	a0,at,80364 <_fail>
+   800d8:	3c02ff00 	lui	v1,0xff00
+   800dc:	3442ff00 	ori	v1,v1,0xff00
+   800e0:	00421026 	xor	v1,v1,v1
+   800e4:	241d0018 	li	sp,24
+   800e8:	1440009e 	bnez	v1,80364 <_fail>
+   800ec:	3c02ff00 	lui	v1,0xff00
+   800f0:	3442ff00 	ori	v1,v1,0xff00
+   800f4:	3c030f0f 	lui	a0,0xf0f
+   800f8:	34630f0f 	ori	a0,a0,0xf0f
+   800fc:	00432026 	xor	a1,v1,a0
+   80100:	24870000 	addiu	a4,a1,0
+   80104:	241d001e 	li	sp,30
+   80108:	3c1ef00f 	lui	at,0xf00f
+   8010c:	37def00f 	ori	at,at,0xf00f
+   80110:	14fe0094 	bne	a4,at,80364 <_fail>
+   80114:	3c020ff0 	lui	v1,0xff0
+   80118:	34420ff0 	ori	v1,v1,0xff0
+   8011c:	3c03f0f0 	lui	a0,0xf0f0
+   80120:	3463f0f0 	ori	a0,a0,0xf0f0
+   80124:	00432026 	xor	a1,v1,a0
+   80128:	00000000 	nop
+   8012c:	24870000 	addiu	a4,a1,0
+   80130:	241d001f 	li	sp,31
+   80134:	3c1eff00 	lui	at,0xff00
+   80138:	37deff00 	ori	at,at,0xff00
+   8013c:	14fe0089 	bne	a4,at,80364 <_fail>
+   80140:	3c0200ff 	lui	v1,0xff
+   80144:	344200ff 	ori	v1,v1,0xff
+   80148:	3c030f0f 	lui	a0,0xf0f
+   8014c:	34630f0f 	ori	a0,a0,0xf0f
+   80150:	00432026 	xor	a1,v1,a0
+   80154:	00000000 	nop
+   80158:	00000000 	nop
+   8015c:	24870000 	addiu	a4,a1,0
+   80160:	241d0020 	li	sp,32
+   80164:	3c1e0ff0 	lui	at,0xff0
+   80168:	37de0ff0 	ori	at,at,0xff0
+   8016c:	14fe007d 	bne	a4,at,80364 <_fail>
+   80170:	3c02ff00 	lui	v1,0xff00
+   80174:	3442ff00 	ori	v1,v1,0xff00
+   80178:	3c030f0f 	lui	a0,0xf0f
+   8017c:	34630f0f 	ori	a0,a0,0xf0f
+   80180:	00432026 	xor	a1,v1,a0
+   80184:	241d0022 	li	sp,34
+   80188:	3c1ef00f 	lui	at,0xf00f
+   8018c:	37def00f 	ori	at,at,0xf00f
+   80190:	149e0074 	bne	a1,at,80364 <_fail>
+   80194:	3c020ff0 	lui	v1,0xff0
+   80198:	34420ff0 	ori	v1,v1,0xff0
+   8019c:	3c03f0f0 	lui	a0,0xf0f0
+   801a0:	3463f0f0 	ori	a0,a0,0xf0f0
+   801a4:	00000000 	nop
+   801a8:	00432026 	xor	a1,v1,a0
+   801ac:	241d0023 	li	sp,35
+   801b0:	3c1eff00 	lui	at,0xff00
+   801b4:	37deff00 	ori	at,at,0xff00
+   801b8:	149e006a 	bne	a1,at,80364 <_fail>
+   801bc:	3c0200ff 	lui	v1,0xff
+   801c0:	344200ff 	ori	v1,v1,0xff
+   801c4:	3c030f0f 	lui	a0,0xf0f
+   801c8:	34630f0f 	ori	a0,a0,0xf0f
+   801cc:	00000000 	nop
+   801d0:	00000000 	nop
+   801d4:	00432026 	xor	a1,v1,a0
+   801d8:	241d0024 	li	sp,36
+   801dc:	3c1e0ff0 	lui	at,0xff0
+   801e0:	37de0ff0 	ori	at,at,0xff0
+   801e4:	149e005f 	bne	a1,at,80364 <_fail>
+   801e8:	3c02ff00 	lui	v1,0xff00
+   801ec:	3442ff00 	ori	v1,v1,0xff00
+   801f0:	00000000 	nop
+   801f4:	3c030f0f 	lui	a0,0xf0f
+   801f8:	34630f0f 	ori	a0,a0,0xf0f
+   801fc:	00432026 	xor	a1,v1,a0
+   80200:	241d0025 	li	sp,37
+   80204:	3c1ef00f 	lui	at,0xf00f
+   80208:	37def00f 	ori	at,at,0xf00f
+   8020c:	149e0055 	bne	a1,at,80364 <_fail>
+   80210:	3c020ff0 	lui	v1,0xff0
+   80214:	34420ff0 	ori	v1,v1,0xff0
+   80218:	00000000 	nop
+   8021c:	3c03f0f0 	lui	a0,0xf0f0
+   80220:	3463f0f0 	ori	a0,a0,0xf0f0
+   80224:	00000000 	nop
+   80228:	00432026 	xor	a1,v1,a0
+   8022c:	241d0026 	li	sp,38
+   80230:	3c1eff00 	lui	at,0xff00
+   80234:	37deff00 	ori	at,at,0xff00
+   80238:	149e004a 	bne	a1,at,80364 <_fail>
+   8023c:	3c0200ff 	lui	v1,0xff
+   80240:	344200ff 	ori	v1,v1,0xff
+   80244:	00000000 	nop
+   80248:	00000000 	nop
+   8024c:	3c030f0f 	lui	a0,0xf0f
+   80250:	34630f0f 	ori	a0,a0,0xf0f
+   80254:	00432026 	xor	a1,v1,a0
+   80258:	241d0027 	li	sp,39
+   8025c:	3c1e0ff0 	lui	at,0xff0
+   80260:	37de0ff0 	ori	at,at,0xff0
+   80264:	149e003f 	bne	a1,at,80364 <_fail>
+   80268:	3c030f0f 	lui	a0,0xf0f
+   8026c:	34630f0f 	ori	a0,a0,0xf0f
+   80270:	3c02ff00 	lui	v1,0xff00
+   80274:	3442ff00 	ori	v1,v1,0xff00
+   80278:	00432026 	xor	a1,v1,a0
+   8027c:	241d0029 	li	sp,41
+   80280:	3c1ef00f 	lui	at,0xf00f
+   80284:	37def00f 	ori	at,at,0xf00f
+   80288:	149e0036 	bne	a1,at,80364 <_fail>
+   8028c:	3c03f0f0 	lui	a0,0xf0f0
+   80290:	3463f0f0 	ori	a0,a0,0xf0f0
+   80294:	3c020ff0 	lui	v1,0xff0
+   80298:	34420ff0 	ori	v1,v1,0xff0
+   8029c:	00000000 	nop
+   802a0:	00432026 	xor	a1,v1,a0
+   802a4:	241d002a 	li	sp,42
+   802a8:	3c1eff00 	lui	at,0xff00
+   802ac:	37deff00 	ori	at,at,0xff00
+   802b0:	149e002c 	bne	a1,at,80364 <_fail>
+   802b4:	3c030f0f 	lui	a0,0xf0f
+   802b8:	34630f0f 	ori	a0,a0,0xf0f
+   802bc:	3c0200ff 	lui	v1,0xff
+   802c0:	344200ff 	ori	v1,v1,0xff
+   802c4:	00000000 	nop
+   802c8:	00000000 	nop
+   802cc:	00432026 	xor	a1,v1,a0
+   802d0:	241d002b 	li	sp,43
+   802d4:	3c1e0ff0 	lui	at,0xff0
+   802d8:	37de0ff0 	ori	at,at,0xff0
+   802dc:	149e0021 	bne	a1,at,80364 <_fail>
+   802e0:	3c030f0f 	lui	a0,0xf0f
+   802e4:	34630f0f 	ori	a0,a0,0xf0f
+   802e8:	00000000 	nop
+   802ec:	3c02ff00 	lui	v1,0xff00
+   802f0:	3442ff00 	ori	v1,v1,0xff00
+   802f4:	00432026 	xor	a1,v1,a0
+   802f8:	241d002c 	li	sp,44
+   802fc:	3c1ef00f 	lui	at,0xf00f
+   80300:	37def00f 	ori	at,at,0xf00f
+   80304:	149e0017 	bne	a1,at,80364 <_fail>
+   80308:	3c03f0f0 	lui	a0,0xf0f0
+   8030c:	3463f0f0 	ori	a0,a0,0xf0f0
+   80310:	00000000 	nop
+   80314:	3c020ff0 	lui	v1,0xff0
+   80318:	34420ff0 	ori	v1,v1,0xff0
+   8031c:	00000000 	nop
+   80320:	00432026 	xor	a1,v1,a0
+   80324:	241d002d 	li	sp,45
+   80328:	3c1eff00 	lui	at,0xff00
+   8032c:	37deff00 	ori	at,at,0xff00
+   80330:	149e000c 	bne	a1,at,80364 <_fail>
+   80334:	3c030f0f 	lui	a0,0xf0f
+   80338:	34630f0f 	ori	a0,a0,0xf0f
+   8033c:	00000000 	nop
+   80340:	00000000 	nop
+   80344:	3c0200ff 	lui	v1,0xff
+   80348:	344200ff 	ori	v1,v1,0xff
+   8034c:	00432026 	xor	a1,v1,a0
+   80350:	241d002e 	li	sp,46
+   80354:	3c1e0ff0 	lui	at,0xff0
+   80358:	37de0ff0 	ori	at,at,0xff0
+   8035c:	149e0001 	bne	a1,at,80364 <_fail>
+
+00080360 <_pass>:
+   80360:	241d0001 	li	sp,1
+
+00080364 <_fail>:
+   80364:	24020001 	li	v1,1
+   80368:	409da800 	mtc0	sp,c0_staten
+   8036c:	1402ffff 	bne	zero,v1,8036c <_fail+0x8>
+   80370:	00000000 	nop
+   80374:	00000000 	nop
+   80378:	00000000 	nop
+   8037c:	00000000 	nop
+   80380:	00000000 	nop
+   80384:	00000000 	nop
+   80388:	00000000 	nop
+   8038c:	00000000 	nop
+   80390:	00000000 	nop
+   80394:	00000000 	nop
+   80398:	00000000 	nop
+   8039c:	00000000 	nop
+   803a0:	00000000 	nop
+   803a4:	00000000 	nop
+   803a8:	00000000 	nop
+   803ac:	00000000 	nop
+   803b0:	00000000 	nop
+   803b4:	00000000 	nop
+   803b8:	00000000 	nop
+   803bc:	00000000 	nop
+   803c0:	00000000 	nop
+   803c4:	00000000 	nop
+   803c8:	00000000 	nop
+   803cc:	00000000 	nop
+   803d0:	00000000 	nop
+   803d4:	00000000 	nop
+   803d8:	00000000 	nop
+   803dc:	00000000 	nop
+   803e0:	00000000 	nop
+   803e4:	00000000 	nop
+   803e8:	00000000 	nop
+   803ec:	00000000 	nop
+   803f0:	00000000 	nop
+   803f4:	00000000 	nop
+   803f8:	00000000 	nop
+   803fc:	00000000 	nop
+   80400:	00000000 	nop
+   80404:	00000000 	nop
+   80408:	00000000 	nop
+   8040c:	00000000 	nop
