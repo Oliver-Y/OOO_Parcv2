@@ -1,0 +1,195 @@
+
+bin/parcv2-sra:     file format elf32-littlemips
+
+
+Disassembly of section .text:
+
+00080000 <_test>:
+   80000:	3c028000 	lui	v1,0x8000
+   80004:	00022003 	sra	a1,v1,0x0
+   80008:	241d000d 	li	sp,13
+   8000c:	3c1e8000 	lui	at,0x8000
+   80010:	149e0087 	bne	a1,at,80230 <_fail>
+   80014:	3c028000 	lui	v1,0x8000
+   80018:	00022043 	sra	a1,v1,0x1
+   8001c:	241d000e 	li	sp,14
+   80020:	3c1ec000 	lui	at,0xc000
+   80024:	149e0082 	bne	a1,at,80230 <_fail>
+   80028:	3c028000 	lui	v1,0x8000
+   8002c:	000221c3 	sra	a1,v1,0x7
+   80030:	241d000f 	li	sp,15
+   80034:	3c1eff00 	lui	at,0xff00
+   80038:	149e007d 	bne	a1,at,80230 <_fail>
+   8003c:	3c028000 	lui	v1,0x8000
+   80040:	00022383 	sra	a1,v1,0xe
+   80044:	241d0010 	li	sp,16
+   80048:	3c1efffe 	lui	at,0xfffe
+   8004c:	149e0078 	bne	a1,at,80230 <_fail>
+   80050:	3c028000 	lui	v1,0x8000
+   80054:	34420001 	ori	v1,v1,0x1
+   80058:	000227c3 	sra	a1,v1,0x1f
+   8005c:	241d0011 	li	sp,17
+   80060:	241effff 	li	at,-1
+   80064:	149e0072 	bne	a1,at,80230 <_fail>
+   80068:	3c027fff 	lui	v1,0x7fff
+   8006c:	3442ffff 	ori	v1,v1,0xffff
+   80070:	00022003 	sra	a1,v1,0x0
+   80074:	241d0013 	li	sp,19
+   80078:	3c1e7fff 	lui	at,0x7fff
+   8007c:	37deffff 	ori	at,at,0xffff
+   80080:	149e006b 	bne	a1,at,80230 <_fail>
+   80084:	3c027fff 	lui	v1,0x7fff
+   80088:	3442ffff 	ori	v1,v1,0xffff
+   8008c:	00022043 	sra	a1,v1,0x1
+   80090:	241d0014 	li	sp,20
+   80094:	3c1e3fff 	lui	at,0x3fff
+   80098:	37deffff 	ori	at,at,0xffff
+   8009c:	149e0064 	bne	a1,at,80230 <_fail>
+   800a0:	3c027fff 	lui	v1,0x7fff
+   800a4:	3442ffff 	ori	v1,v1,0xffff
+   800a8:	000221c3 	sra	a1,v1,0x7
+   800ac:	241d0015 	li	sp,21
+   800b0:	3c1e00ff 	lui	at,0xff
+   800b4:	37deffff 	ori	at,at,0xffff
+   800b8:	149e005d 	bne	a1,at,80230 <_fail>
+   800bc:	3c027fff 	lui	v1,0x7fff
+   800c0:	3442ffff 	ori	v1,v1,0xffff
+   800c4:	00022383 	sra	a1,v1,0xe
+   800c8:	241d0016 	li	sp,22
+   800cc:	3c1e0001 	lui	at,0x1
+   800d0:	37deffff 	ori	at,at,0xffff
+   800d4:	149e0056 	bne	a1,at,80230 <_fail>
+   800d8:	3c027fff 	lui	v1,0x7fff
+   800dc:	3442ffff 	ori	v1,v1,0xffff
+   800e0:	000227c3 	sra	a1,v1,0x1f
+   800e4:	241d0017 	li	sp,23
+   800e8:	14800051 	bnez	a1,80230 <_fail>
+   800ec:	3c028181 	lui	v1,0x8181
+   800f0:	34428181 	ori	v1,v1,0x8181
+   800f4:	00022003 	sra	a1,v1,0x0
+   800f8:	241d0019 	li	sp,25
+   800fc:	3c1e8181 	lui	at,0x8181
+   80100:	37de8181 	ori	at,at,0x8181
+   80104:	149e004a 	bne	a1,at,80230 <_fail>
+   80108:	3c028181 	lui	v1,0x8181
+   8010c:	34428181 	ori	v1,v1,0x8181
+   80110:	00022043 	sra	a1,v1,0x1
+   80114:	241d001a 	li	sp,26
+   80118:	3c1ec0c0 	lui	at,0xc0c0
+   8011c:	37dec0c0 	ori	at,at,0xc0c0
+   80120:	149e0043 	bne	a1,at,80230 <_fail>
+   80124:	3c028181 	lui	v1,0x8181
+   80128:	34428181 	ori	v1,v1,0x8181
+   8012c:	000221c3 	sra	a1,v1,0x7
+   80130:	241d001b 	li	sp,27
+   80134:	3c1eff03 	lui	at,0xff03
+   80138:	37de0303 	ori	at,at,0x303
+   8013c:	149e003c 	bne	a1,at,80230 <_fail>
+   80140:	3c028181 	lui	v1,0x8181
+   80144:	34428181 	ori	v1,v1,0x8181
+   80148:	00022383 	sra	a1,v1,0xe
+   8014c:	241d001c 	li	sp,28
+   80150:	3c1efffe 	lui	at,0xfffe
+   80154:	37de0606 	ori	at,at,0x606
+   80158:	149e0035 	bne	a1,at,80230 <_fail>
+   8015c:	3c028181 	lui	v1,0x8181
+   80160:	34428181 	ori	v1,v1,0x8181
+   80164:	000227c3 	sra	a1,v1,0x1f
+   80168:	241d001d 	li	sp,29
+   8016c:	241effff 	li	at,-1
+   80170:	149e002f 	bne	a1,at,80230 <_fail>
+   80174:	3c028000 	lui	v1,0x8000
+   80178:	000211c3 	sra	v1,v1,0x7
+   8017c:	241d0023 	li	sp,35
+   80180:	3c1eff00 	lui	at,0xff00
+   80184:	145e002a 	bne	v1,at,80230 <_fail>
+   80188:	3c028000 	lui	v1,0x8000
+   8018c:	000221c3 	sra	a1,v1,0x7
+   80190:	24870000 	addiu	a4,a1,0
+   80194:	241d0029 	li	sp,41
+   80198:	3c1eff00 	lui	at,0xff00
+   8019c:	14fe0024 	bne	a4,at,80230 <_fail>
+   801a0:	3c028000 	lui	v1,0x8000
+   801a4:	00022383 	sra	a1,v1,0xe
+   801a8:	00000000 	nop
+   801ac:	24870000 	addiu	a4,a1,0
+   801b0:	241d002a 	li	sp,42
+   801b4:	3c1efffe 	lui	at,0xfffe
+   801b8:	14fe001d 	bne	a4,at,80230 <_fail>
+   801bc:	3c028000 	lui	v1,0x8000
+   801c0:	34420001 	ori	v1,v1,0x1
+   801c4:	000227c3 	sra	a1,v1,0x1f
+   801c8:	00000000 	nop
+   801cc:	00000000 	nop
+   801d0:	24870000 	addiu	a4,a1,0
+   801d4:	241d002b 	li	sp,43
+   801d8:	241effff 	li	at,-1
+   801dc:	14fe0014 	bne	a4,at,80230 <_fail>
+   801e0:	3c028000 	lui	v1,0x8000
+   801e4:	000221c3 	sra	a1,v1,0x7
+   801e8:	241d002d 	li	sp,45
+   801ec:	3c1eff00 	lui	at,0xff00
+   801f0:	149e000f 	bne	a1,at,80230 <_fail>
+   801f4:	3c028000 	lui	v1,0x8000
+   801f8:	00000000 	nop
+   801fc:	00022383 	sra	a1,v1,0xe
+   80200:	241d002e 	li	sp,46
+   80204:	3c1efffe 	lui	at,0xfffe
+   80208:	149e0009 	bne	a1,at,80230 <_fail>
+   8020c:	3c028000 	lui	v1,0x8000
+   80210:	34420001 	ori	v1,v1,0x1
+   80214:	00000000 	nop
+   80218:	00000000 	nop
+   8021c:	000227c3 	sra	a1,v1,0x1f
+   80220:	241d002f 	li	sp,47
+   80224:	241effff 	li	at,-1
+   80228:	149e0001 	bne	a1,at,80230 <_fail>
+
+0008022c <_pass>:
+   8022c:	241d0001 	li	sp,1
+
+00080230 <_fail>:
+   80230:	24020001 	li	v1,1
+   80234:	409da800 	mtc0	sp,c0_staten
+   80238:	1402ffff 	bne	zero,v1,80238 <_fail+0x8>
+   8023c:	00000000 	nop
+   80240:	00000000 	nop
+   80244:	00000000 	nop
+   80248:	00000000 	nop
+   8024c:	00000000 	nop
+   80250:	00000000 	nop
+   80254:	00000000 	nop
+   80258:	00000000 	nop
+   8025c:	00000000 	nop
+   80260:	00000000 	nop
+   80264:	00000000 	nop
+   80268:	00000000 	nop
+   8026c:	00000000 	nop
+   80270:	00000000 	nop
+   80274:	00000000 	nop
+   80278:	00000000 	nop
+   8027c:	00000000 	nop
+   80280:	00000000 	nop
+   80284:	00000000 	nop
+   80288:	00000000 	nop
+   8028c:	00000000 	nop
+   80290:	00000000 	nop
+   80294:	00000000 	nop
+   80298:	00000000 	nop
+   8029c:	00000000 	nop
+   802a0:	00000000 	nop
+   802a4:	00000000 	nop
+   802a8:	00000000 	nop
+   802ac:	00000000 	nop
+   802b0:	00000000 	nop
+   802b4:	00000000 	nop
+   802b8:	00000000 	nop
+   802bc:	00000000 	nop
+   802c0:	00000000 	nop
+   802c4:	00000000 	nop
+   802c8:	00000000 	nop
+   802cc:	00000000 	nop
+   802d0:	00000000 	nop
+   802d4:	00000000 	nop
+   802d8:	00000000 	nop
+   802dc:	00000000 	nop
