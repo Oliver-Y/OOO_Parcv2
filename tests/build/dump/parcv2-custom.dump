@@ -12,19 +12,19 @@ Disassembly of section .text:
    80010:	24870000 	addiu	a4,a1,0
    80014:	241d0008 	li	sp,8
    80018:	241e0028 	li	at,40
-   8001c:	14fe0001 	bne	a4,at,80024 <_fail>
+   8001c:	14fe0005 	bne	a4,at,80034 <_fail>
+   80020:	00000000 	nop
+   80024:	00000000 	nop
+   80028:	00000000 	nop
+   8002c:	00000000 	nop
 
-00080020 <_pass>:
-   80020:	241d0001 	li	sp,1
+00080030 <_pass>:
+   80030:	241d0001 	li	sp,1
 
-00080024 <_fail>:
-   80024:	24020001 	li	v1,1
-   80028:	409da800 	mtc0	sp,c0_staten
-   8002c:	1402ffff 	bne	zero,v1,8002c <_fail+0x8>
-   80030:	00000000 	nop
-   80034:	00000000 	nop
-   80038:	00000000 	nop
-   8003c:	00000000 	nop
+00080034 <_fail>:
+   80034:	24020001 	li	v1,1
+   80038:	409da800 	mtc0	sp,c0_staten
+   8003c:	1402ffff 	bne	zero,v1,8003c <_fail+0x8>
    80040:	00000000 	nop
    80044:	00000000 	nop
    80048:	00000000 	nop
@@ -61,3 +61,7 @@ Disassembly of section .text:
    800c4:	00000000 	nop
    800c8:	00000000 	nop
    800cc:	00000000 	nop
+   800d0:	00000000 	nop
+   800d4:	00000000 	nop
+   800d8:	00000000 	nop
+   800dc:	00000000 	nop
