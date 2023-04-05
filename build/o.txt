@@ -1,0 +1,28 @@
+WARNING: ../pv2ooo/pv2ooo-sim.v:154: $readmemh: Standard inconsistency, following 1364-2005.
+VCD info: dumpfile ../tests/build/vmh/parcv2-custom.vcd opened for output.
+{ xxxxxxxx |        |        |        |        }
+{ xxxxxxxx |        |        |        |  (-_-) }
+{ xxxxxxxx |        |        |        |  (-_-) }
+{ 00080000 |  (-_-) |  (-_-) |  (-_-) |  nop   }
+{ 00080000 |  (-_-) |  (-_-) |  (-_-) |  (-_-) }
+{ 00080004 |  addiu |  (-_-) |  (-_-) |  (-_-) }
+{ 00080008 |  addiu |  addiu |  (-_-) |  (-_-) }
+{ 0008000c |  addiu |  addiu |  addiu |  addiu }
+{ 00080010 |  mul   |  addiu |  addiu |  addiu }
+{ 00080014 |  addiu |  mul   |  addiu |  addiu }
+{ 00080018 |  addiu |  addiu |  mul   |  (-_-) }
+{#0008001c |# addiu |  addiu |  addiu |  addiu }
+{ 0008001c |  addiu |  (-_-) |  addiu |  addiu }
+{ 00080020 |  bne   |  addiu |  (-_-) |  mul   }
+{ 00080024 |  nop   |  bne   |  addiu |  addiu }
+{ 00080028 |  nop   |  nop   |  bne   |  bne   }
+{ 0008002c |  nop   |  nop   |  nop   |  nop   }
+{ 00080030 |  nop   |  nop   |  nop   |  nop   }
+{ 00080034 |  addiu |  nop   |  nop   |  nop   }
+{ 00080038 |  addiu |  addiu |  nop   |  nop   }
+{ 0008003c |  mtc0  |  addiu |  addiu |  addiu }
+{ 00080040 |  bne   |  mtc0  |  addiu |  addiu }
+{-00080044-|- nop  -|  bne   |  mtc0  |  mtc0  }
+*** PASSED ***
+{ 0008003c |  (-_-) |  (-_-) |  bne   |  bne   }
+{ 00080040 |

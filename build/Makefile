@@ -93,6 +93,7 @@ tests = \
   parcv2-subu.vmh \
   parcv2-xori.vmh \
   parcv2-xor.vmh \
+  parcv2-custom.vmh \
 
 pv2byp_rtl_sim = pv2byp-sim
 pv2byp_rtl_rand_sim = pv2byp-randdelay-sim
