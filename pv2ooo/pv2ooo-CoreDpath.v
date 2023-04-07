@@ -461,9 +461,9 @@ module parc_CoreDpath
     .rdata0  (rf_rdata0_Dhl),
     .raddr1  (rf_raddr1_Dhl),
     .rdata1  (rf_rdata1_Dhl),
-    .wen_p   (rf_wen_Whl),
-    .waddr_p (rf_waddr_Whl),
-    .wdata_p (wb_mux_out_Whl)
+    .wen_p   (rf_wen_Chl),
+    .waddr_p (rf_waddr_Chl),
+    .wdata_p (rf_wdata_Chl)
   );
 
   //----------------------------------------------------------------------
