@@ -10,16 +10,16 @@ VCD info: dumpfile ../tests/build/vmh/parcv2-custom.vcd opened for output.
 { 0008000c |  addiu |  addiu |  addiu |  addiu }
 { 00080010 |  mul   |  addiu |  addiu |  addiu }
 { 00080014 |  addiu |  mul   |  addiu |  addiu }
-{ 00080018 |  addiu |  addiu |  mul   |  (-_-) }
-{#0008001c |# addiu |  addiu |  addiu |  addiu }
-{ 0008001c |  addiu |  (-_-) |  addiu |  addiu }
-{ 00080020 |  bne   |  addiu |  (-_-) |  mul   }
-{ 00080024 |  nop   |  bne   |  addiu |  addiu }
-{ 00080028 |  nop   |  nop   |  bne   |  bne   }
-{ 0008002c |  nop   |  nop   |  nop   |  nop   }
-{ 00080030 |  nop   |  nop   |  nop   |  nop   }
-{ 00080034 |  addiu |  nop   |  nop   |  nop   }
-{ 00080038 |  addiu |  addiu |  nop   |  nop   }
+{ 00080018 |  nop   |  addiu |  mul   |  (-_-) }
+{#0008001c |# nop   |  nop   |  addiu |  addiu }
+{ 0008001c |  nop   |  (-_-) |  nop   |  nop   }
+{ 00080020 |  nop   |  nop   |  (-_-) |  mul   }
+{ 00080024 |  nop   |  nop   |  nop   |  nop   }
+{ 00080028 |  addiu |  nop   |  nop   |  nop   }
+{ 0008002c |  addiu |  addiu |  nop   |  nop   }
+{ 00080030 |  bne   |  addiu |  addiu |  addiu }
+{ 00080034 |  addiu |  bne   |  addiu |  addiu }
+{ 00080038 |  addiu |  addiu |  bne   |  bne   }
 { 0008003c |  mtc0  |  addiu |  addiu |  addiu }
 { 00080040 |  bne   |  mtc0  |  addiu |  addiu }
 {-00080044-|- nop  -|  bne   |  mtc0  |  mtc0  }

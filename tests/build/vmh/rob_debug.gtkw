@@ -1,0 +1,52 @@
+[*]
+[*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
+[*] Sat Apr  8 00:49:25 2023
+[*]
+[dumpfile] "/Users/OliverY/Desktop/cpsc420/cpsc436/tests/build/vmh/parcv2-custom.vcd"
+[dumpfile_mtime] "Sat Apr  8 00:39:45 2023"
+[dumpfile_size] 4246307
+[savefile] "/Users/OliverY/Desktop/cpsc420/cpsc436/tests/build/vmh/rob_debug.gtkw"
+[timestart] 0
+[size] 1440 847
+[pos] -1 -1
+*-4.966353 77 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] parc_sim.
+[treeopen] parc_sim.proc.
+[treeopen] parc_sim.proc.ctrl.
+[sst_width] 193
+[signals_width] 273
+[sst_expanded] 1
+[sst_vpaned_height] 253
+@29
+parc_sim.proc.ctrl.rob.clk
+@22
+parc_sim.proc.ctrl.rob.tail_ptr[4:0]
+parc_sim.proc.ctrl.rob.head_ptr[4:0]
+@28
+parc_sim.proc.ctrl.rob.rob_alloc_req_rdy_reg
+@22
+parc_sim.proc.ctrl.ir_Dhl[31:0]
+parc_sim.proc.ctrl.ir_Whl[31:0]
+@28
+parc_sim.proc.ctrl.rob_fill_wen_Whl
+@22
+parc_sim.proc.ctrl.rob.rob_fill_slot[3:0]
+@28
+parc_sim.proc.ctrl.rob.rob_0[6:0]
+parc_sim.proc.ctrl.rob.rob_1[6:0]
+parc_sim.proc.ctrl.rob.rob_2[6:0]
+@22
+parc_sim.proc.ctrl.rob.rob_3[6:0]
+parc_sim.proc.ctrl.rob.rob_4[6:0]
+parc_sim.proc.ctrl.rob.rob_5[6:0]
+@28
+parc_sim.proc.ctrl.rob.rob_alloc_req_rdy
+parc_sim.proc.ctrl.rob.rob_alloc_req_val
+@22
+parc_sim.proc.ctrl.rob.rob_alloc_req_preg[4:0]
+@28
+parc_sim.proc.ctrl.rob.rob_commit_wen
+@22
+parc_sim.proc.ctrl.rob.head_ptr[4:0]
+[pattern_trace] 1
+[pattern_trace] 0
