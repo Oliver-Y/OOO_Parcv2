@@ -1,0 +1,58 @@
+[*]
+[*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
+[*] Sun Apr  9 20:04:23 2023
+[*]
+[dumpfile] "/Users/OliverY/Desktop/cpsc420/cpsc436/tests/build/vmh/parcv2-custom-spec.vcd"
+[dumpfile_mtime] "Sun Apr  9 20:04:00 2023"
+[dumpfile_size] 4237649
+[savefile] "/Users/OliverY/Desktop/cpsc420/cpsc436/tests/build/vmh/speculation.gtkw"
+[timestart] 72
+[size] 1272 1440
+[pos] -1 -1
+*-4.691292 130 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] parc_sim.
+[treeopen] parc_sim.proc.
+[treeopen] parc_sim.proc.ctrl.
+[sst_width] 193
+[signals_width] 271
+[sst_expanded] 1
+[sst_vpaned_height] 462
+@28
+parc_sim.proc.ctrl.clk
+@22
+parc_sim.proc.ctrl.rob.tail_ptr[4:0]
+@28
+parc_sim.proc.ctrl.rob.spec
+parc_sim.proc.ctrl.rob.is_branch_Dhl
+parc_sim.proc.ctrl.is_branch_Dhl
+parc_sim.proc.ctrl.rob.rob_0[7:0]
+parc_sim.proc.ctrl.rob.rob_1[7:0]
+parc_sim.proc.ctrl.rob.rob_2[7:0]
+parc_sim.proc.ctrl.rob.rob_3[7:0]
+parc_sim.proc.ctrl.rob.rob_4[7:0]
+parc_sim.proc.ctrl.rob_req_val_Dhl
+parc_sim.proc.ctrl.rob.branch_true_Xhl
+parc_sim.proc.ctrl.rob.branch_true
+@22
+parc_sim.proc.dpath.op0_mux_out_Dhl[31:0]
+parc_sim.proc.dpath.op1_mux_out_Dhl[31:0]
+parc_sim.proc.dpath.op1_byp_rob_slot_Dhl[3:0]
+@28
+parc_sim.proc.dpath.op1_byp_mux_sel_Dhl[2:0]
+@22
+parc_sim.proc.dpath.op1_byp_mux_out_Dhl[31:0]
+parc_sim.proc.ctrl.rob.rob_commit_rf_waddr[4:0]
+@28
+parc_sim.proc.ctrl.rob.rob_commit_wen
+@22
+parc_sim.proc.ctrl.rob.rob_commit_slot[3:0]
+parc_sim.proc.dpath.rf_rdata1_Dhl[31:0]
+@28
+parc_sim.proc.dpath.rf_wen_Chl
+@22
+parc_sim.proc.dpath.rf_waddr_Chl[4:0]
+parc_sim.proc.dpath.rf_wdata_Chl[31:0]
+@23
+parc_sim.proc.dpath.rf_raddr1_Dhl[4:0]
+[pattern_trace] 1
+[pattern_trace] 0

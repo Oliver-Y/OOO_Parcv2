@@ -34,6 +34,7 @@ module parc_CoreReorderBuffer
   
   //Turn this on when we begin to speculate
   reg spec = 0; 
+  reg branch_true = 0; 
 
   reg rob_alloc_req_rdy_reg;
 
@@ -83,12 +84,13 @@ module parc_CoreReorderBuffer
   assign rob_alloc_resp_slot = tail_ptr; 
   assign rob_commit_wen = rob[head_ptr][VALID] && !rob[head_ptr][PENDING];
   assign rob_commit_slot = head_ptr; //TODO: shouldn't this just be tied to the head ptr?
-  assign rob_commit_rf_waddr = rob[head_ptr][7:2]; //No need for reg as well should just be tied to head ptr. 
+  assign rob_commit_rf_waddr = rob[head_ptr][7:3]; //No need for reg as well should just be tied to head ptr. 
+  wire [4:0] prev = (tail_ptr -1) % 16; 
 
   reg [5:0] alloc_count = 0;
 
   always @(posedge clk)begin
-    //begin allocation
+    //begin allocation. Always allocate 
     if(rob_alloc_req_val && alloc_count < 16)begin
       rob[tail_ptr][VALID] <= 1; //valid
       rob[tail_ptr][PENDING] <= 1; //pending
@@ -107,6 +109,7 @@ module parc_CoreReorderBuffer
     end 
     //Only speculate one level, unless back to back "valid" branch instructions
     if(spec) begin 
+      //We should check right here whether we want to invalidate or not? 
       if(!is_branch_Dhl && !branch_true_Xhl) begin 
         spec <= 0; 
       end 
@@ -114,27 +117,36 @@ module parc_CoreReorderBuffer
     //Branches don't get put into the ROB. 
     //Set it to 0, unless the curr DHL is another branch. Also look to either 1. invalidate or 2. 
     if(branch_true_Xhl) begin 
+      //Note: Previous instruciton was not necessarily a write therefore was not necessarily a speculation instruction. 
       //Invalidate it in this case
-      rob[(tail_ptr - 1) % 16][VALID] <= 0; 
-      rob[(tail_ptr - 1) % 16][PENDING] <= 0; 
-      rob[(tail_ptr - 1) % 16][SPEC] <= 0; 
-      rob[(tail_ptr - 1) % 16][7:3] <= 0; 
-      alloc_count -= 1;
-      //Set speculation register --> Branch is true so go invalidate instruction 
+      branch_true <= 1; 
+    end
+    if(rob[prev][SPEC] == 1) 
+    begin
+      if(branch_true) begin 
+        //invalid 
+        rob[prev][VALID] <= 0; 
+        rob[prev][PENDING] <= 0; 
+        rob[prev][SPEC] <= 0; 
+        rob[prev][7:3] <= 0; 
+        alloc_count -= 1;
+      end 
+      else begin 
+        //valid 
+        rob[prev][SPEC] <= 0; 
+      end  
+    end  
+    
+    if(branch_true) begin 
+      //Only ever speculate for one level so flip this off after one cycle 
+      branch_true <= 0; 
     end 
-    else 
-    begin 
-      rob[(tail_ptr - 1) % 16][SPEC] <= 0; 
-    end 
-
 
     //begin fill
     if(rob_fill_val) begin
       rob[rob_fill_slot][PENDING] <= 0; //turn off pending when data is filled
     end
     //end fill
-
-
     if(rob_commit_wen)begin
       rob[head_ptr][VALID] <= 0;
       rob[head_ptr][7:3] <= 0;

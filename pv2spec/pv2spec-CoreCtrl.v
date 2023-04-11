@@ -483,7 +483,7 @@ module parc_CoreCtrl
 
   wire       is_load_Dhl         = ( cs[`PARC_INST_MSG_MEM_REQ] == ld );
 
-  wire       is_branch_Dhl       = ( cs[`PARC_INST_MSG_MEM_REQ] != br_none ); 
+  wire       is_branch_Dhl       = inst_val_Dhl && ( cs[`PARC_INST_MSG_BR_SEL] != br_none ); 
 
   wire       dmemreq_msg_rw_Dhl  = ( cs[`PARC_INST_MSG_MEM_REQ] == st );
   wire [1:0] dmemreq_msg_len_Dhl = cs[`PARC_INST_MSG_MEM_LEN];
@@ -955,7 +955,8 @@ module parc_CoreCtrl
   // Reorder Buffer
   //----------------------------------------------------------------------
 
-  wire rob_req_val_Dhl = inst_val_Dhl && !stall_Dhl && rf_wen_Dhl;
+  //Currently this will not pull high on a squash. Meaning that we won't even get an allocation for the instruction after?
+  wire rob_req_val_Dhl = !bubble_Dhl && !stall_Dhl && rf_wen_Dhl;
   wire rob_fill_val = inst_val_Whl && rf_wen_Whl;
 
   wire rob_req_rdy_Dhl;

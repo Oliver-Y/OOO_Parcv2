@@ -953,6 +953,7 @@ module parc_CoreCtrl
   // Reorder Buffer
   //----------------------------------------------------------------------
 
+  //brj_resolve_Xhl. 
   wire rob_req_val_Dhl = inst_val_Dhl && !stall_Dhl && rf_wen_Dhl;
   wire rob_fill_val = inst_val_Whl && rf_wen_Whl;
 
