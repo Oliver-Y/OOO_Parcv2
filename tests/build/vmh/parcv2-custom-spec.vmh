@@ -3,21 +3,15 @@
 24020000  // 00080000 li v1,0 //Rob 0 
 2403001e  // 00080004 li a0,30 // Rob 1
 24040028  // 00080008 li a1,40 // Rob 2
-tail ptr:3
 14020003  // 0008000c bne zero,v1,8001c <_test+0x1c> Rob3 //Expected to be false 
 24020014  // 00080010 li v1,20 //Rob 3
-tail ptr: 4
 
-14020001  // 00080014 bne zero,v1,8001c <_test+0x1c> //Expected to be True Xhl
-bne// store --> 
+14020001  // 00080014 bne zero,v1,8001c <_test+0x1c> 
 24020000  // 00080018 li v1,0 Rob 4. 
 
 
 1002002c  // 0008001c beq zero,v1,800d0 <_fail+0xac> 
 
-Should invalidate rob 4 in ALU?   This is now in the fetch phase we should pick it up. 
-Then in the DHL phase, it should have the operands committed already from Rob 3. 
-then in Xhl phase it should squash. 
 
 @20008    // <_pass>
 241d0001  // 00080020 li sp,1

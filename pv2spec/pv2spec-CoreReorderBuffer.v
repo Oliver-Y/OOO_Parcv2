@@ -85,7 +85,7 @@ module parc_CoreReorderBuffer
   assign rob_commit_wen = rob[head_ptr][VALID] && !rob[head_ptr][PENDING];
   assign rob_commit_slot = head_ptr; //TODO: shouldn't this just be tied to the head ptr?
   assign rob_commit_rf_waddr = rob[head_ptr][7:3]; //No need for reg as well should just be tied to head ptr. 
-  wire [4:0] prev = (tail_ptr -1) % 16; 
+  wire [4:0] prev = (tail_ptr - 1) % 16; 
 
   reg [5:0] alloc_count = 0;
 
@@ -149,6 +149,8 @@ module parc_CoreReorderBuffer
     //end fill
     if(rob_commit_wen)begin
       rob[head_ptr][VALID] <= 0;
+      rob[head_ptr][PENDING] <= 0;
+      rob[head_ptr][SPEC] <= 0;
       rob[head_ptr][7:3] <= 0;
       alloc_count -= 1;
       head_ptr += 1; 
