@@ -5,6 +5,6 @@ VCD info: dumpfile ../tests/build/vmh/parcv2-nor.vcd opened for output.
  STATS                                      
 --------------------------------------------
  status     =          1
- num_cycles =        224
+ num_cycles =        351
  num_inst   =        222
- ipc        = 0.991071
+ ipc        = 0.632479

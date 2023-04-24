@@ -36,7 +36,7 @@ module parc_CoreDpath
   input   [2:0] op1_mux_sel_Dhl,
   input  [31:0] inst_Dhl,
   input   [3:0] alu_fn_Xhl,
-  input   [2:0] muldivreq_msg_fn_Dhl,
+  input   [2:0] muldivreq_msg_fn_Ihl,
   input         muldivreq_val,
   output        muldivreq_rdy,
   output        muldivresp_val,
@@ -50,6 +50,7 @@ module parc_CoreDpath
   input  [ 4:0] rf_waddr_Whl,
   input         stall_Fhl,
   input         stall_Dhl,
+  input         stall_Ihl,
   input         stall_Xhl,
   input         stall_Mhl,
   input         stall_Whl,
@@ -250,7 +251,27 @@ module parc_CoreDpath
   wire [31:0] wdata_Dhl = op1_byp_mux_out_Dhl;
 
   //----------------------------------------------------------------------
-  // X <- D
+  // I <- D
+  //----------------------------------------------------------------------
+
+  reg [31:0] pc_Ihl;
+  reg [31:0] branch_targ_Ihl;
+  reg [31:0] op0_mux_out_Ihl;
+  reg [31:0] op1_mux_out_Ihl;
+  reg [31:0] wdata_Ihl;
+
+  always @ (posedge clk) begin
+    if( !stall_Ihl ) begin
+      pc_Ihl          <= pc_Dhl;
+      branch_targ_Ihl <= branch_targ_Dhl;
+      op0_mux_out_Ihl <= op0_mux_out_Dhl;
+      op1_mux_out_Ihl <= op1_mux_out_Dhl;
+      wdata_Ihl       <= wdata_Dhl;
+    end
+  end
+
+  //----------------------------------------------------------------------
+  // X <- I
   //----------------------------------------------------------------------
 
   reg [31:0] pc_Xhl;
@@ -261,11 +282,11 @@ module parc_CoreDpath
 
   always @ (posedge clk) begin
     if( !stall_Xhl ) begin
-      pc_Xhl          <= pc_Dhl;
-      branch_targ_Xhl <= branch_targ_Dhl;
-      op0_mux_out_Xhl <= op0_mux_out_Dhl;
-      op1_mux_out_Xhl <= op1_mux_out_Dhl;
-      wdata_Xhl       <= wdata_Dhl;
+      pc_Xhl          <= pc_Ihl;
+      branch_targ_Xhl <= branch_targ_Ihl;
+      op0_mux_out_Xhl <= op0_mux_out_Ihl;
+      op1_mux_out_Xhl <= op1_mux_out_Ihl;
+      wdata_Xhl       <= wdata_Ihl;
     end
   end
 
@@ -305,9 +326,9 @@ module parc_CoreDpath
     .clk                   (clk),
     .reset                 (reset),
     .stall_mult1           (stall_Mhl),
-    .muldivreq_msg_fn      (muldivreq_msg_fn_Dhl),
-    .muldivreq_msg_a       (op0_mux_out_Dhl),
-    .muldivreq_msg_b       (op1_mux_out_Dhl),
+    .muldivreq_msg_fn      (muldivreq_msg_fn_Ihl),
+    .muldivreq_msg_a       (op0_mux_out_Ihl),
+    .muldivreq_msg_b       (op1_mux_out_Ihl),
     .muldivreq_val         (muldivreq_val),
     .muldivreq_rdy         (muldivreq_rdy),
     .muldivresp_msg_result (muldivresp_msg_result_X3hl),

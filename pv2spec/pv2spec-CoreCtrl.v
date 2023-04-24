@@ -39,7 +39,7 @@ module parc_CoreCtrl
   output  [2:0] op1_mux_sel_Dhl,
   output [31:0] inst_Dhl,
   output  [3:0] alu_fn_Xhl,
-  output  [2:0] muldivreq_msg_fn_Dhl,
+  output  [2:0] muldivreq_msg_fn_Ihl,
   output        muldivreq_val,
   input         muldivreq_rdy,
   input         muldivresp_val,
@@ -58,6 +58,7 @@ module parc_CoreCtrl
   output [ 4:0] rob_commit_waddr_Chl,
   output        stall_Fhl,
   output        stall_Dhl,
+  output        stall_Ihl,
   output        stall_Xhl,
   output        stall_Mhl,
   output        stall_Whl,
@@ -483,8 +484,6 @@ module parc_CoreCtrl
 
   wire       is_load_Dhl         = ( cs[`PARC_INST_MSG_MEM_REQ] == ld );
 
-  wire       is_branch_Dhl       = inst_val_Dhl && ( cs[`PARC_INST_MSG_BR_SEL] != br_none ); 
-
   wire       dmemreq_msg_rw_Dhl  = ( cs[`PARC_INST_MSG_MEM_REQ] == st );
   wire [1:0] dmemreq_msg_len_Dhl = cs[`PARC_INST_MSG_MEM_LEN];
   wire       dmemreq_val_Dhl     = ( cs[`PARC_INST_MSG_MEM_REQ] != nr );
@@ -509,12 +508,12 @@ module parc_CoreCtrl
   // Scoreboard
   //----------------------------------------------------------------------
 
-  reg [4:0] inst_latency_Dhl;
+  reg [5:0] inst_latency_Dhl;
   always @(*) begin
     inst_latency_Dhl =
-      (cs[`PARC_INST_MSG_MULDIV_EN] != n)    ? 5'b10000 :
-      (cs[`PARC_INST_MSG_MEM_REQ]   != nr)   ? 5'b00100 :
-                                               5'b00010;
+      (cs[`PARC_INST_MSG_MULDIV_EN] != n)    ? 6'b100000 :
+      (cs[`PARC_INST_MSG_MEM_REQ]   != nr)   ? 6'b001000 :
+                                               6'b000100;
   end
     
   reg [2:0] inst_func_unit_Dhl;
@@ -525,7 +524,8 @@ module parc_CoreCtrl
                                                3'd1;
   end
     
-  wire [4:0] stalls_combined = {
+  wire [5:0] stalls_combined = {
+    stall_Ihl,
     stall_Xhl,
     stall_Mhl,
     1'b0,
@@ -533,6 +533,7 @@ module parc_CoreCtrl
     stall_Whl};
 
   wire       stall_sb_Dhl;
+  wire       non_sb_stall_Dhl;
   wire [1:0] wb_mux_sel_Whl;
 
   wire [3:0] rob_fill_slot_Dhl;
@@ -553,6 +554,7 @@ module parc_CoreCtrl
     .latency             (inst_latency_Dhl),
     .func_unit           (inst_func_unit_Dhl), 
     .inst_val_Dhl        (inst_val_Dhl),
+    .non_sb_stall_Dhl    (non_sb_stall_Dhl),
 
     .rob_alloc_slot      (rob_fill_slot_Dhl),
     .rob_commit_slot     (rob_commit_slot_Chl),
@@ -562,6 +564,7 @@ module parc_CoreCtrl
 
     .src0_byp_mux_sel    (op0_byp_mux_sel_Dhl),
     .src0_byp_rob_slot   (op0_byp_rob_slot_Dhl),
+    
 
     .src1_byp_mux_sel    (op1_byp_mux_sel_Dhl),
     .src1_byp_rob_slot   (op1_byp_rob_slot_Dhl),
@@ -580,9 +583,13 @@ module parc_CoreCtrl
 
   // Aggregate Stall Signal
 
-  assign stall_Dhl = ( stall_Xhl ||
-                      (inst_val_Dhl && stall_sb_Dhl ) ||
+  wire stall_spec_Dhl = inst_val_Ihl && (br_sel_Ihl != br_none);
+
+  assign non_sb_stall_Dhl = ( stall_Ihl ||
+                       stall_spec_Dhl ||
                       (inst_val_Dhl && !rob_req_rdy_Dhl));
+
+  assign stall_Dhl = non_sb_stall_Dhl || (inst_val_Dhl && stall_sb_Dhl );
 
   // Next bubble bit
 
@@ -592,7 +599,82 @@ module parc_CoreCtrl
                        :                       1'bx;
 
   //----------------------------------------------------------------------
-  // X <- D
+  // I <- D
+  //----------------------------------------------------------------------
+
+  reg [31:0] ir_Ihl;
+  reg  [2:0] br_sel_Ihl;
+  reg  [3:0] alu_fn_Ihl;
+  reg  [2:0] muldivreq_msg_fn_Ihl;
+  reg        muldivreq_val_Ihl;
+  reg        muldiv_mux_sel_Ihl;
+  reg        execute_mux_sel_Ihl;
+  reg        is_load_Ihl;
+  reg        dmemreq_msg_rw_Ihl;
+  reg  [1:0] dmemreq_msg_len_Ihl;
+  reg        dmemreq_val_Ihl;
+  reg  [2:0] dmemresp_mux_sel_Ihl;
+  reg        wb_mux_sel_Ihl;
+  reg        rf_wen_Ihl;
+  reg  [4:0] rf_waddr_Ihl;
+  reg  [3:0] rob_fill_slot_Ihl;
+  reg        cp0_wen_Ihl;
+  reg  [4:0] cp0_addr_Ihl;
+
+  reg        bubble_Ihl;
+
+  // Pipeline Controls
+
+  always @ ( posedge clk ) begin
+    if ( reset ) begin
+      bubble_Ihl <= 1'b1;
+    end
+    else if( !stall_Ihl ) begin
+      ir_Ihl               <= ir_Dhl;
+      br_sel_Ihl           <= br_sel_Dhl;
+      alu_fn_Ihl           <= alu_fn_Dhl;
+      muldivreq_msg_fn_Ihl <= muldivreq_msg_fn_Dhl;
+      muldivreq_val_Ihl    <= muldivreq_val_Dhl;
+      muldiv_mux_sel_Ihl   <= muldiv_mux_sel_Dhl;
+      execute_mux_sel_Ihl  <= execute_mux_sel_Dhl;
+      is_load_Ihl          <= is_load_Dhl;
+      dmemreq_msg_rw_Ihl   <= dmemreq_msg_rw_Dhl;
+      dmemreq_msg_len_Ihl  <= dmemreq_msg_len_Dhl;
+      dmemreq_val_Ihl      <= dmemreq_val_Dhl;
+      dmemresp_mux_sel_Ihl <= dmemresp_mux_sel_Dhl;
+      wb_mux_sel_Ihl       <= wb_mux_sel_Dhl;
+      rf_waddr_Ihl         <= rf_waddr_Dhl;
+      rf_wen_Ihl           <= rf_wen_Dhl;
+      rob_fill_slot_Ihl    <= rob_fill_slot_Dhl;
+      cp0_wen_Ihl          <= cp0_wen_Dhl;
+      cp0_addr_Ihl         <= cp0_addr_Dhl;
+
+      bubble_Ihl           <= bubble_next_Dhl;
+    end
+
+  end
+
+  // Is the current stage valid?
+
+  wire inst_val_Ihl = ( !bubble_Ihl && !squash_Ihl );
+
+  // Dummy squash signal
+
+  wire squash_Ihl = 1'b0;
+
+  // Stall Signal
+
+  assign stall_Ihl = stall_Xhl;
+
+  // Next bubble bit
+
+  wire bubble_sel_Ihl  = ( squash_Ihl || stall_Ihl );
+  wire bubble_next_Ihl = ( !bubble_sel_Ihl ) ? bubble_Ihl
+                       : ( bubble_sel_Ihl )  ? 1'b1
+                       :                       1'bx;
+
+  //----------------------------------------------------------------------
+  // X <- I
   //----------------------------------------------------------------------
 
   reg [31:0] ir_Xhl;
@@ -622,25 +704,25 @@ module parc_CoreCtrl
       bubble_Xhl <= 1'b1;
     end
     else if( !stall_Xhl ) begin
-      ir_Xhl               <= ir_Dhl;
-      br_sel_Xhl           <= br_sel_Dhl;
-      alu_fn_Xhl           <= alu_fn_Dhl;
-      muldivreq_val_Xhl    <= muldivreq_val_Dhl;
-      muldiv_mux_sel_Xhl   <= muldiv_mux_sel_Dhl;
-      execute_mux_sel_Xhl  <= execute_mux_sel_Dhl;
-      is_load_Xhl          <= is_load_Dhl;
-      dmemreq_msg_rw_Xhl   <= dmemreq_msg_rw_Dhl;
-      dmemreq_msg_len_Xhl  <= dmemreq_msg_len_Dhl;
-      dmemreq_val_Xhl      <= dmemreq_val_Dhl;
-      dmemresp_mux_sel_Xhl <= dmemresp_mux_sel_Dhl;
-      wb_mux_sel_Xhl       <= wb_mux_sel_Dhl;
-      rf_waddr_Xhl         <= rf_waddr_Dhl;
-      rf_wen_Xhl           <= rf_wen_Dhl;
-      rob_fill_slot_Xhl    <= rob_fill_slot_Dhl;
-      cp0_wen_Xhl          <= cp0_wen_Dhl;
-      cp0_addr_Xhl         <= cp0_addr_Dhl;
+      ir_Xhl               <= ir_Ihl;
+      br_sel_Xhl           <= br_sel_Ihl;
+      alu_fn_Xhl           <= alu_fn_Ihl;
+      muldivreq_val_Xhl    <= muldivreq_val_Ihl;
+      muldiv_mux_sel_Xhl   <= muldiv_mux_sel_Ihl;
+      execute_mux_sel_Xhl  <= execute_mux_sel_Ihl;
+      is_load_Xhl          <= is_load_Ihl;
+      dmemreq_msg_rw_Xhl   <= dmemreq_msg_rw_Ihl;
+      dmemreq_msg_len_Xhl  <= dmemreq_msg_len_Ihl;
+      dmemreq_val_Xhl      <= dmemreq_val_Ihl;
+      dmemresp_mux_sel_Xhl <= dmemresp_mux_sel_Ihl;
+      wb_mux_sel_Xhl       <= wb_mux_sel_Ihl;
+      rf_waddr_Xhl         <= rf_waddr_Ihl;
+      rf_wen_Xhl           <= rf_wen_Ihl;
+      rob_fill_slot_Xhl    <= rob_fill_slot_Ihl;
+      cp0_wen_Xhl          <= cp0_wen_Ihl;
+      cp0_addr_Xhl         <= cp0_addr_Ihl;
 
-      bubble_Xhl           <= bubble_next_Dhl;
+      bubble_Xhl           <= bubble_next_Ihl;
     end
 
   end
@@ -655,7 +737,7 @@ module parc_CoreCtrl
 
   // Muldiv request
 
-  assign muldivreq_val = muldivreq_val_Dhl && inst_val_Dhl;
+  assign muldivreq_val = muldivreq_val_Ihl && inst_val_Ihl;
   assign muldivresp_rdy = 1'b1;
 
   // Only send a valid dmem request if not stalled
@@ -955,8 +1037,7 @@ module parc_CoreCtrl
   // Reorder Buffer
   //----------------------------------------------------------------------
 
-  //Currently this will not pull high on a squash. Meaning that we won't even get an allocation for the instruction after?
-  wire rob_req_val_Dhl = !bubble_Dhl && !stall_Dhl && rf_wen_Dhl;
+  wire rob_req_val_Dhl = inst_val_Dhl && !stall_Dhl && rf_wen_Dhl;
   wire rob_fill_val = inst_val_Whl && rf_wen_Whl;
 
   wire rob_req_rdy_Dhl;
@@ -967,7 +1048,7 @@ module parc_CoreCtrl
   wire       rob_commit_wen_Chl;
   wire [4:0] rob_commit_waddr_Chl;
 
-  parc_CoreReorderBuffer rob
+ parc_CoreReorderBuffer rob
   (
     .clk                       (clk),
     .reset                     (reset),

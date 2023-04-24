@@ -5,6 +5,6 @@ VCD info: dumpfile ../tests/build/vmh/parcv2-andi.vcd opened for output.
  STATS                                      
 --------------------------------------------
  status     =          1
- num_cycles =         81
+ num_cycles =        125
  num_inst   =         79
- ipc        = 0.975309
+ ipc        = 0.632000

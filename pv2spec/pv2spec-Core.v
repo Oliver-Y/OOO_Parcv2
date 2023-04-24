@@ -60,7 +60,7 @@ module parc_Core
   wire  [2:0] op1_mux_sel_Dhl;
   wire [31:0] inst_Dhl;
   wire  [3:0] alu_fn_Xhl;
-  wire  [2:0] muldivreq_msg_fn_Dhl;
+  wire  [2:0] muldivreq_msg_fn_Ihl;
   wire        muldivreq_val;
   wire        muldivreq_rdy;
   wire        muldivresp_val;
@@ -79,6 +79,7 @@ module parc_Core
   wire [ 4:0] rob_commit_waddr_Chl;
   wire        stall_Fhl;
   wire        stall_Dhl;
+  wire        stall_Ihl;
   wire        stall_Xhl;
   wire        stall_Mhl;
   wire        stall_Whl;
@@ -165,7 +166,7 @@ module parc_Core
     .op1_mux_sel_Dhl        (op1_mux_sel_Dhl),
     .inst_Dhl               (inst_Dhl),
     .alu_fn_Xhl             (alu_fn_Xhl),
-    .muldivreq_msg_fn_Dhl   (muldivreq_msg_fn_Dhl),
+    .muldivreq_msg_fn_Ihl   (muldivreq_msg_fn_Ihl),
     .muldivreq_val          (muldivreq_val),
     .muldivreq_rdy          (muldivreq_rdy),
     .muldivresp_val         (muldivresp_val),
@@ -184,6 +185,7 @@ module parc_Core
     .rob_commit_waddr_Chl   (rob_commit_waddr_Chl),
     .stall_Fhl              (stall_Fhl),
     .stall_Dhl              (stall_Dhl),
+    .stall_Ihl              (stall_Ihl),
     .stall_Xhl              (stall_Xhl),
     .stall_Mhl              (stall_Mhl),
     .stall_Whl              (stall_Whl),
@@ -230,7 +232,7 @@ module parc_Core
     .op1_mux_sel_Dhl         (op1_mux_sel_Dhl),
     .inst_Dhl                (inst_Dhl),
     .alu_fn_Xhl              (alu_fn_Xhl),
-    .muldivreq_msg_fn_Dhl    (muldivreq_msg_fn_Dhl),
+    .muldivreq_msg_fn_Ihl    (muldivreq_msg_fn_Ihl),
     .muldivreq_val           (muldivreq_val),
     .muldivreq_rdy           (muldivreq_rdy),
     .muldivresp_val          (muldivresp_val),
@@ -249,6 +251,7 @@ module parc_Core
     .rob_commit_waddr_Chl   (rob_commit_waddr_Chl),
     .stall_Fhl               (stall_Fhl),
     .stall_Dhl               (stall_Dhl),
+    .stall_Ihl               (stall_Ihl),
     .stall_Xhl               (stall_Xhl),
     .stall_Mhl               (stall_Mhl),
     .stall_Whl               (stall_Whl),

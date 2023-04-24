@@ -5,6 +5,6 @@ VCD info: dumpfile ../tests/build/vmh/parcv1-lui.vcd opened for output.
  STATS                                      
 --------------------------------------------
  status     =          1
- num_cycles =         46
+ num_cycles =         61
  num_inst   =         44
- ipc        = 0.956522
+ ipc        = 0.721311

@@ -5,6 +5,6 @@ VCD info: dumpfile ../tests/build/vmh/parcv2-remu.vcd opened for output.
  STATS                                      
 --------------------------------------------
  status     =          1
- num_cycles =        340
+ num_cycles =        460
  num_inst   =        286
- ipc        = 0.841176
+ ipc        = 0.621739
