@@ -483,6 +483,7 @@ module parc_CoreCtrl
   // Memory Controls
 
   wire       is_load_Dhl         = ( cs[`PARC_INST_MSG_MEM_REQ] == ld );
+  wire       is_branch_Dhl       = inst_val_Dhl && ( cs[`PARC_INST_MSG_BR_SEL] != br_none ); 
 
   wire       dmemreq_msg_rw_Dhl  = ( cs[`PARC_INST_MSG_MEM_REQ] == st );
   wire [1:0] dmemreq_msg_len_Dhl = cs[`PARC_INST_MSG_MEM_LEN];
@@ -570,7 +571,10 @@ module parc_CoreCtrl
     .src1_byp_rob_slot   (op1_byp_rob_slot_Dhl),
 
     .stall_hazard        (stall_sb_Dhl),
-    .wb_mux_sel          (wb_mux_sel_Whl)
+    .wb_mux_sel          (wb_mux_sel_Whl),
+
+    .is_branch_Ihl             (is_branch_Ihl), 
+    .branch_true_Xhl           (brj_taken_Xhl)
   );
 
   //----------------------------------------------------------------------
@@ -610,6 +614,7 @@ module parc_CoreCtrl
   reg        muldiv_mux_sel_Ihl;
   reg        execute_mux_sel_Ihl;
   reg        is_load_Ihl;
+  reg        is_branch_Ihl;
   reg        dmemreq_msg_rw_Ihl;
   reg  [1:0] dmemreq_msg_len_Ihl;
   reg        dmemreq_val_Ihl;
@@ -638,6 +643,7 @@ module parc_CoreCtrl
       muldiv_mux_sel_Ihl   <= muldiv_mux_sel_Dhl;
       execute_mux_sel_Ihl  <= execute_mux_sel_Dhl;
       is_load_Ihl          <= is_load_Dhl;
+      is_branch_Ihl          <= is_branch_Dhl;
       dmemreq_msg_rw_Ihl   <= dmemreq_msg_rw_Dhl;
       dmemreq_msg_len_Ihl  <= dmemreq_msg_len_Dhl;
       dmemreq_val_Ihl      <= dmemreq_val_Dhl;

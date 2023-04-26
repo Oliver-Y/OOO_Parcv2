@@ -36,7 +36,13 @@ module parc_CoreScoreboard
   output [ 3:0] src1_byp_rob_slot,// Source reg 1 ROB slot
 
   output        stall_hazard,     // Destination register ready
-  output [ 1:0] wb_mux_sel        // Writeback mux sel out
+  output [ 1:0] wb_mux_sel,        // Writeback mux sel out
+
+  input is_branch_Ihl, 
+  // //Have a speculation register in the Decode stage that tells us whether or not the next instruciton is speculative
+  // //Basically if a branch is seen in DHL this should be true.  
+  // //Have feedback, if the curr Xhl instruciton is a branch, then mark the previous speculative instruction as invalid
+  input branch_true_Xhl
 );
 
   reg       pending          [31:0];
@@ -47,6 +53,39 @@ module parc_CoreScoreboard
   reg [5:0] wb_alu_latency;
   reg [5:0] wb_mem_latency;
   reg [5:0] wb_mul_latency;
+
+  //BEGIN CODE FOR BYPASS SQUASHING :)_0000A0DWA
+  reg       speculative          [31:0];
+  reg       spec;
+  reg       branch_true;
+  reg  [ 4:0] prev;   
+  integer i;
+  always @(posedge clk)begin
+
+    //if branch is taken, squash spec instruction
+    if(branch_true_Xhl && speculative[prev] == 1'b1)begin
+
+        reg_latency[prev]     <= 6'b0;
+        pending[prev]         <= 1'b0;
+        functional_unit[prev] <= 3'b0; 
+        speculative[prev] <= 1'b0; 
+
+    end else begin
+      speculative[prev] <= 1'b0;
+      prev <= 5'b0;
+    end
+    
+    //if next instruction is a branch, tag curr as spec instruciton
+    if(is_branch_Ihl)begin
+      speculative[dst] <= 1'b1;
+      prev <= dst;
+    end
+
+  end
+
+
+
+  //END
 
   // Store ROB slots (for bypassing)
 
