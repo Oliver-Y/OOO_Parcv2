@@ -583,14 +583,15 @@ module parc_CoreCtrl
 
   // Squash instruction in D if a valid branch in X is taken
 
-  wire squash_Dhl = ( inst_val_Xhl && brj_taken_Xhl );
+  // wire squash_Dhl = ( inst_val_Xhl && brj_taken_Xhl );
+  wire squash_Dhl =  ( inst_val_Xhl && brj_taken_Xhl );
 
   // Aggregate Stall Signal
 
-  wire stall_spec_Dhl = inst_val_Ihl && (br_sel_Ihl != br_none);
+ // wire stall_spec_Dhl = inst_val_Ihl && (br_sel_Ihl != br_none);
 
   assign non_sb_stall_Dhl = ( stall_Ihl ||
-                       stall_spec_Dhl ||
+                     //  stall_spec_Dhl ||
                       (inst_val_Dhl && !rob_req_rdy_Dhl));
 
   assign stall_Dhl = non_sb_stall_Dhl || (inst_val_Dhl && stall_sb_Dhl );
@@ -643,7 +644,7 @@ module parc_CoreCtrl
       muldiv_mux_sel_Ihl   <= muldiv_mux_sel_Dhl;
       execute_mux_sel_Ihl  <= execute_mux_sel_Dhl;
       is_load_Ihl          <= is_load_Dhl;
-      is_branch_Ihl          <= is_branch_Dhl;
+      is_branch_Ihl        <= is_branch_Dhl;
       dmemreq_msg_rw_Ihl   <= dmemreq_msg_rw_Dhl;
       dmemreq_msg_len_Ihl  <= dmemreq_msg_len_Dhl;
       dmemreq_val_Ihl      <= dmemreq_val_Dhl;
@@ -666,7 +667,7 @@ module parc_CoreCtrl
 
   // Dummy squash signal
 
-  wire squash_Ihl = 1'b0;
+  wire squash_Ihl = ( inst_val_Xhl && brj_taken_Xhl );
 
   // Stall Signal
 
@@ -1193,4 +1194,3 @@ module parc_CoreCtrl
 endmodule
 
 `endif
-

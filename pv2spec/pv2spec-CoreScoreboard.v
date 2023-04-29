@@ -57,9 +57,9 @@ module parc_CoreScoreboard
   //BEGIN CODE FOR BYPASS SQUASHING :)_0000A0DWA
   reg       speculative          [31:0];
   reg       spec;
-  reg       branch_true;
   reg  [ 4:0] prev;   
-  integer i;
+  wire spec_29 = speculative[29];
+
   always @(posedge clk)begin
 
     //if branch is taken, squash spec instruction
@@ -68,13 +68,15 @@ module parc_CoreScoreboard
         reg_latency[prev]     <= 6'b0;
         pending[prev]         <= 1'b0;
         functional_unit[prev] <= 3'b0; 
-        speculative[prev] <= 1'b0; 
+        speculative[prev]     <= 1'b0;
+        prev <= 5'b0;  
 
     end else begin
+      //otherwise, just clear the spec bit and call it a day
       speculative[prev] <= 1'b0;
       prev <= 5'b0;
     end
-    
+
     //if next instruction is a branch, tag curr as spec instruciton
     if(is_branch_Ihl)begin
       speculative[dst] <= 1'b1;
@@ -82,8 +84,6 @@ module parc_CoreScoreboard
     end
 
   end
-
-
 
   //END
 

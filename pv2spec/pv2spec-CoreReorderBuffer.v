@@ -85,9 +85,11 @@ module parc_CoreReorderBuffer
   assign rob_commit_wen = rob[head_ptr][VALID] && !rob[head_ptr][PENDING];
   assign rob_commit_slot = head_ptr; //TODO: shouldn't this just be tied to the head ptr?
   assign rob_commit_rf_waddr = rob[head_ptr][7:3]; //No need for reg as well should just be tied to head ptr. 
+  wire [4:0] double_prev = (tail_ptr - 2) % 16; 
   wire [4:0] prev = (tail_ptr - 1) % 16; 
 
   reg [5:0] alloc_count = 0;
+  //Initiall starts at 1
 
   always @(posedge clk)begin
     //begin allocation. Always allocate 
@@ -121,22 +123,28 @@ module parc_CoreReorderBuffer
       //Invalidate it in this case
       branch_true <= 1; 
     end
-    if(rob[prev][SPEC] == 1) 
-    begin
-      if(branch_true) begin 
-        //invalid 
+    
+    if(branch_true) begin 
+      if(rob[prev][SPEC] == 1) begin 
         rob[prev][VALID] <= 0; 
         rob[prev][PENDING] <= 0; 
-        rob[prev][SPEC] <= 0; 
+        rob[prev][SPEC] <= 1; 
         rob[prev][7:3] <= 0; 
         alloc_count -= 1;
       end 
-      else begin 
-        //valid 
-        rob[prev][SPEC] <= 0; 
-      end  
-    end  
-    
+      if(rob[double_prev][SPEC] == 1) begin 
+        rob[double_prev][VALID] <= 0; 
+        rob[double_prev][PENDING] <= 0; 
+        rob[double_prev][SPEC] <= 1; 
+        rob[double_prev][7:3] <= 0; 
+        alloc_count -= 1;
+      end 
+    end 
+    if(rob[head_ptr][VALID] == 0 && rob[head_ptr][SPEC] == 1) begin 
+      rob[head_ptr][SPEC] <= 0; 
+      head_ptr +=1; 
+      head_ptr %= 16; 
+    end 
     if(branch_true) begin 
       //Only ever speculate for one level so flip this off after one cycle 
       branch_true <= 0; 
@@ -153,18 +161,10 @@ module parc_CoreReorderBuffer
       rob[head_ptr][SPEC] <= 0;
       rob[head_ptr][7:3] <= 0;
       alloc_count -= 1;
-      head_ptr += 1; 
-      head_ptr %= 16; 
+      head_ptr += 1;
+      head_ptr %= 16;  
     end
     
-    if(alloc_count >= 16)begin
-      rob_alloc_req_rdy_reg <= 0;
-    end else begin
-      rob_alloc_req_rdy_reg <= 1;
-    end
-  
-
-    //end commit
 
   end
 
