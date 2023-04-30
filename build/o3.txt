@@ -1,0 +1,82 @@
+WARNING: ../pv2ooo/pv2ooo-sim.v:154: $readmemh: Standard inconsistency, following 1364-2005.
+VCD info: dumpfile ../tests/build/vmh/parcv2-bgez.vcd opened for output.
+{ xxxxxxxx |        |        |        |        }
+{ xxxxxxxx |        |        |        |  (-_-) }
+{ xxxxxxxx |        |        |        |  (-_-) }
+{ 00080000 |  (-_-) |  (-_-) |  (-_-) |  nop   }
+{ 00080000 |  (-_-) |  (-_-) |  (-_-) |  (-_-) }
+{ 00080004 |  addiu |  (-_-) |  (-_-) |  (-_-) }
+{ 00080008 |  bgez  |  addiu |  (-_-) |  (-_-) }
+{-0008000c-|- addiu-|  bgez  |  addiu |  addiu }
+{ 00080018 |  (-_-) |  (-_-) |  bgez  |  bgez  }
+{ 0008001c |  bgez  |  (-_-) |  (-_-) |  (-_-) }
+{-00080020-|- addiu-|  bgez  |  (-_-) |  (-_-) }
+{ 00080010 |  (-_-) |  (-_-) |  bgez  |  bgez  }
+{ 00080014 |  addiu |  (-_-) |  (-_-) |  (-_-) }
+{ 00080018 |  bne   |  addiu |  (-_-) |  (-_-) }
+{-0008001c-|- bgez -|  bne   |  addiu |  addiu }
+{ 00080024 |  (-_-) |  (-_-) |  bne   |  bne   }
+{ 00080028 |  addiu |  (-_-) |  (-_-) |  (-_-) }
+{ 0008002c |  bgez  |  addiu |  (-_-) |  (-_-) }
+{-00080030-|- addiu-|  bgez  |  addiu |  addiu }
+{ 0008003c |  (-_-) |  (-_-) |  bgez  |  bgez  }
+{ 00080040 |  bgez  |  (-_-) |  (-_-) |  (-_-) }
+{-00080044-|- addiu-|  bgez  |  (-_-) |  (-_-) }
+{ 00080034 |  (-_-) |  (-_-) |  bgez  |  bgez  }
+{ 00080038 |  addiu |  (-_-) |  (-_-) |  (-_-) }
+{ 0008003c |  bne   |  addiu |  (-_-) |  (-_-) }
+{-00080040-|- bgez -|  bne   |  addiu |  addiu }
+{ 00080048 |  (-_-) |  (-_-) |  bne   |  bne   }
+{ 0008004c |  addiu |  (-_-) |  (-_-) |  (-_-) }
+{ 00080050 |  bgez  |  addiu |  (-_-) |  (-_-) }
+{ 00080054 |  addiu |  bgez  |  addiu |  addiu }
+{ 00080058 |  bne   |  addiu |  bgez  |  bgez  }
+{-0008005c-|- addiu-|  bne   |  addiu |  addiu }
+{ 00080060 |  (-_-) |  (-_-) |  bne   |  bne   }
+{ 00080064 |  bgez  |  (-_-) |  (-_-) |  (-_-) }
+{ 00080068 |  addiu |  bgez  |  (-_-) |  (-_-) }
+{ 0008006c |  bgez  |  addiu |  bgez  |  bgez  }
+{ 00080070 |  addiu |  bgez  |  addiu |  addiu }
+{ 00080074 |  bne   |  addiu |  bgez  |  bgez  }
+{-00080078-|- addiu-|  bne   |  addiu |  addiu }
+{ 0008007c |  (-_-) |  (-_-) |  bne   |  bne   }
+{ 00080080 |  bgez  |  (-_-) |  (-_-) |  (-_-) }
+{ 00080084 |  addiu |  bgez  |  (-_-) |  (-_-) }
+{ 00080088 |  bgez  |  addiu |  bgez  |  bgez  }
+{ 0008008c |  addiu |  bgez  |  addiu |  addiu }
+{ 00080090 |  bne   |  addiu |  bgez  |  bgez  }
+{-00080094-|- addiu-|  bne   |  addiu |  addiu }
+{ 00080098 |  (-_-) |  (-_-) |  bne   |  bne   }
+{ 0008009c |  addiu |  (-_-) |  (-_-) |  (-_-) }
+{ 000800a0 |  nop   |  addiu |  (-_-) |  (-_-) }
+{ 000800a4 |  bgez  |  nop   |  addiu |  addiu }
+{ 000800a8 |  addiu |  bgez  |  nop   |  nop   }
+{ 000800ac |  bne   |  addiu |  bgez  |  bgez  }
+{-000800b0-|- addiu-|  bne   |  addiu |  addiu }
+{ 000800b4 |  (-_-) |  (-_-) |  bne   |  bne   }
+{ 000800b8 |  addiu |  (-_-) |  (-_-) |  (-_-) }
+{ 000800bc |  nop   |  addiu |  (-_-) |  (-_-) }
+{ 000800c0 |  nop   |  nop   |  addiu |  addiu }
+{ 000800c4 |  bgez  |  nop   |  nop   |  nop   }
+{ 000800c8 |  addiu |  bgez  |  nop   |  nop   }
+{ 000800cc |  bne   |  addiu |  bgez  |  bgez  }
+{-000800d0-|- addiu-|  bne   |  addiu |  addiu }
+{ 000800d4 |  (-_-) |  (-_-) |  bne   |  bne   }
+{ 000800d8 |  addiu |  (-_-) |  (-_-) |  (-_-) }
+{ 000800dc |  bgez  |  addiu |  (-_-) |  (-_-) }
+{-000800e0-|- addiu-|  bgez  |  addiu |  addiu }
+
+{ 000800ec |  (-_-) |  (-_-) |  bgez  |  bgez  }
+{ 000800f0 |  addiu |  (-_-) |  (-_-) |  (-_-) }
+{ 000800f4 |  addiu |  addiu |  (-_-) |  (-_-) }
+{ 000800f8 |  addiu |  addiu |  addiu |  addiu }
+{ 000800fc |  addiu |  addiu |  addiu |  addiu }
+{ 00080100 |  bne   |  addiu |  addiu |  addiu }
+{ 00080104 |  addiu |  bne   |  addiu |  addiu }
+{ 00080108 |  addiu |  addiu |  bne   |  bne   }
+{ 0008010c |  mtc0  |  addiu |  addiu |  addiu }
+{ 00080110 |  bne   |  mtc0  |  addiu |  addiu }
+{-00080114-|- nop  -|  bne   |  mtc0  |  mtc0  }
+*** PASSED ***
+{ 0008010c |  (-_-) |  (-_-) |  bne   |  bne   }
+{ 00080110 |

@@ -1,0 +1,17 @@
+
+ Entering Test Suite: vc-MemReqMsg
+  + Running Test Case: TestFullStr_addr32_data32
+     [ passed ] Test ( rd:0100:1      ) succeeded, [ 040000401xxxxxxxx == 040000401xxxxxxxx ]
+     [ passed ] Test ( rd:0100:2      ) succeeded, [ 004000402xxxxxxxx == 004000402xxxxxxxx ]
+     [ passed ] Test ( rd:0100:0      ) succeeded, [ 000400400xxxxxxxx == 000400400xxxxxxxx ]
+     [ passed ] Test ( wr:0100:1:0c0d ) succeeded, [ 4400004010a0b0c0d == 4400004010a0b0c0d ]
+     [ passed ] Test ( wr:0100:2:0d0e ) succeeded, [ 4040004020b0c0d0e == 4040004020b0c0d0e ]
+     [ passed ] Test ( wr:0100:0:0e0f ) succeeded, [ 4004004000c0d0e0f == 4004004000c0d0e0f ]
+  + Running Test Case: TestTinyStr_addr32_data32
+     [ passed ] Test ( rd ) succeeded, [ 040000401xxxxxxxx == 040000401xxxxxxxx ]
+     [ passed ] Test ( rd ) succeeded, [ 004000402xxxxxxxx == 004000402xxxxxxxx ]
+     [ passed ] Test ( rd ) succeeded, [ 000400400xxxxxxxx == 000400400xxxxxxxx ]
+     [ passed ] Test ( wr ) succeeded, [ 4400004010a0b0c0d == 4400004010a0b0c0d ]
+     [ passed ] Test ( wr ) succeeded, [ 4040004020b0c0d0e == 4040004020b0c0d0e ]
+     [ passed ] Test ( wr ) succeeded, [ 4004004000c0d0e0f == 4004004000c0d0e0f ]
+

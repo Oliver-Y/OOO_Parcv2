@@ -1,0 +1,16 @@
+
+ Entering Test Suite: parc-InstMsg
+  + Running Test Case: TestRegRegInstMsg
+     [ passed ] Test ( addu  r 4, r 3, r 2   ) succeeded, [ 00432021 == 00432021 ]
+     [ passed ] Test ( sll   r 9, r 9, 10    ) succeeded, [ 0009a400 == 0009a400 ]
+     [ passed ] Test ( mul   r 1, r12, r30   ) succeeded, [ 73cc0802 == 73cc0802 ]
+     [ passed ] Test ( jr    r31             ) succeeded, [ 03e00008 == 03e00008 ]
+  + Running Test Case: TestRegImmInstMsg
+     [ passed ] Test ( addiu r15, r19, 0010  ) succeeded, [ 266f0010 == 266f0010 ]
+     [ passed ] Test ( slti  r 2, r 3, 0a83  ) succeeded, [ 28620a83 == 28620a83 ]
+     [ passed ] Test ( lh    r12, ffff(r30)  ) succeeded, [ 87ccffff == 87ccffff ]
+     [ passed ] Test ( bne   r10, r28, 0004  ) succeeded, [ 155c0004 == 155c0004 ]
+  + Running Test Case: TestTargInstMsg
+     [ passed ] Test ( j     08040fc         ) succeeded, [ 088040fc == 088040fc ]
+     [ passed ] Test ( jal   3fffff0         ) succeeded, [ 0ffffff0 == 0ffffff0 ]
+

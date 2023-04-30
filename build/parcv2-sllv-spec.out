@@ -5,6 +5,6 @@ VCD info: dumpfile ../tests/build/vmh/parcv2-sllv.vcd opened for output.
  STATS                                      
 --------------------------------------------
  status     =          1
- num_cycles =        401
- num_inst   =        271
- ipc        = 0.675810
+ num_cycles =        363
+ num_inst   =        272
+ ipc        = 0.749311

@@ -5,6 +5,6 @@ VCD info: dumpfile ../tests/build/vmh/parcv1-jal.vcd opened for output.
  STATS                                      
 --------------------------------------------
  status     =          1
- num_cycles =         30
- num_inst   =         18
- ipc        = 0.600000
+ num_cycles =         28
+ num_inst   =         19
+ ipc        = 0.678571

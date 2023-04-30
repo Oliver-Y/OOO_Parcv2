@@ -5,6 +5,6 @@ VCD info: dumpfile ../tests/build/vmh/parcv2-blez.vcd opened for output.
  STATS                                      
 --------------------------------------------
  status     =          1
- num_cycles =        107
- num_inst   =         46
- ipc        = 0.429907
+ num_cycles =         99
+ num_inst   =         59
+ ipc        = 0.595960
