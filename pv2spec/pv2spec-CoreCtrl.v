@@ -671,6 +671,7 @@ module parc_CoreCtrl
 
   // Stall Signal
 
+
   assign stall_Ihl = stall_Xhl;
 
   // Next bubble bit

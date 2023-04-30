@@ -156,7 +156,7 @@ module parc_CoreScoreboard
         reg_latency[r]     <= 6'b0;
         pending[r]         <= 1'b0;
         functional_unit[r] <= 3'b0; 
-      end else if ( accept && (r == dst) ) begin
+      end else if ( accept && (r == dst)) begin
         reg_latency[r]     <= latency;
         pending[r]         <= 1'b1;
         functional_unit[r] <= func_unit;
@@ -165,7 +165,7 @@ module parc_CoreScoreboard
           (reg_latency[r] & stalls) | 
           ((reg_latency[r] & ~stalls) >> 1);
         pending[r]         <= pending[r] &&
-          !(rob_commit_wen && rob_commit_slot == reg_rob_slot[r]);
+          !(rob_commit_wen && rob_commit_slot == reg_rob_slot[r]) && !(branch_true_Xhl && speculative[prev] == 1'b1);
       end
     end
   end
