@@ -7,25 +7,25 @@ Disassembly of section .text:
 00080000 <_test>:
    80000:	24040014 	li	a1,20
    80004:	3c010008 	lui	v0,0x8
-   80008:	242100e0 	addiu	v0,v0,224
+   80008:	242100f0 	addiu	v0,v0,240
    8000c:	8c230014 	lw	a0,20(v0)
    80010:	24820001 	addiu	v1,a1,1
    80014:	2401000a 	li	v0,10
-   80018:	24020014 	li	v1,20
-   8001c:	2403001e 	li	a0,30
-   80020:	241d0014 	li	sp,20
-   80024:	241e0015 	li	at,21
-   80028:	145e0001 	bne	v1,at,80030 <_fail>
+   80018:	3c030008 	lui	a0,0x8
+   8001c:	246300f4 	addiu	a0,a0,244
+   80020:	240500c8 	li	a2,200
+   80024:	2403001e 	li	a0,30
+   80028:	241d0015 	li	sp,21
+   8002c:	241e0015 	li	at,21
+   80030:	145e0001 	bne	v1,at,80038 <_fail>
 
-0008002c <_pass>:
-   8002c:	241d0001 	li	sp,1
+00080034 <_pass>:
+   80034:	241d0001 	li	sp,1
 
-00080030 <_fail>:
-   80030:	24020001 	li	v1,1
-   80034:	409da800 	mtc0	sp,c0_staten
-   80038:	1402ffff 	bne	zero,v1,80038 <_fail+0x8>
-   8003c:	00000000 	nop
-   80040:	00000000 	nop
+00080038 <_fail>:
+   80038:	24020001 	li	v1,1
+   8003c:	409da800 	mtc0	sp,c0_staten
+   80040:	1402ffff 	bne	zero,v1,80040 <_fail+0x8>
    80044:	00000000 	nop
    80048:	00000000 	nop
    8004c:	00000000 	nop
@@ -65,15 +65,19 @@ Disassembly of section .text:
    800d4:	00000000 	nop
    800d8:	00000000 	nop
    800dc:	00000000 	nop
+   800e0:	00000000 	nop
+   800e4:	00000000 	nop
+   800e8:	00000000 	nop
+   800ec:	00000000 	nop
 
 Disassembly of section .data:
 
-000800e0 <tdata_0>:
-   800e0:	deadbeef 	ldc3	$13,-16657(s4)
+000800f0 <tdata_0>:
+   800f0:	deadbeef 	ldc3	$13,-16657(s4)
 
-000800e4 <tdata_1>:
-   800e4:	abcdef01 	swl	t6,-4351(at)
+000800f4 <tdata_1>:
+   800f4:	abcdef01 	swl	t6,-4351(at)
 
-000800e8 <tdata_2>:
-   800e8:	0ff00ff0 	jal	fc03fc0 <_end+0xfb83ed0>
-   800ec:	00000000 	nop
+000800f8 <tdata_2>:
+   800f8:	0ff00ff0 	jal	fc03fc0 <_end+0xfb83ec0>
+   800fc:	00000000 	nop
