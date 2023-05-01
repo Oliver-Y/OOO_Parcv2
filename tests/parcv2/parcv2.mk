@@ -40,5 +40,8 @@ parcv2_srcs += \
   parcv2-remu.S \
   parcv2-custom.S \
   parcv2-custom-spec.S \
+  parcv2-waw.S \
+  parcv2-special.S \
+  
 #  parcv2-mfc0.S \
 
