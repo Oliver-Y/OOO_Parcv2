@@ -15,7 +15,7 @@ Disassembly of section .text:
    8001c:	00000000 	nop
    80020:	00000000 	nop
    80024:	241d0009 	li	sp,9
-   80028:	241e0028 	li	at,40
+   80028:	241e0258 	li	at,600
    8002c:	14fe0001 	bne	a4,at,80034 <_fail>
 
 00080030 <_pass>:
