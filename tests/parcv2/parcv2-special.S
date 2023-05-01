@@ -15,7 +15,7 @@
         lw $3, 20($1) 
         addiu $2, $4, 1
         li $1, 10 
-        la $3, tdata_1
+        lw $4, 20($1) 
         addiu $5, $0, 200
         li $3, 30
         TEST_CHECK_EQ($2, 21);
