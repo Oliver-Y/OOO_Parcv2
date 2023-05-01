@@ -5,23 +5,23 @@ bin/parcv2-special:     file format elf32-littlemips
 Disassembly of section .text:
 
 00080000 <_test>:
-   80000:	3c010008 	lui	v0,0x8
-   80004:	242100e0 	addiu	v0,v0,224
-   80008:	8c230004 	lw	a0,4(v0)
-   8000c:	24020001 	li	v1,1
-   80010:	8c240004 	lw	a1,4(v0)
-   80014:	24050001 	li	a2,1
-   80018:	241d0012 	li	sp,18
-   8001c:	241e0001 	li	at,1
-   80020:	14be0001 	bne	a2,at,80028 <_fail>
+   80000:	24040014 	li	a1,20
+   80004:	3c010008 	lui	v0,0x8
+   80008:	242100d0 	addiu	v0,v0,208
+   8000c:	8c230014 	lw	a0,20(v0)
+   80010:	24820001 	addiu	v1,a1,1
+   80014:	241d0011 	li	sp,17
+   80018:	241e0015 	li	at,21
+   8001c:	145e0001 	bne	v1,at,80024 <_fail>
 
-00080024 <_pass>:
-   80024:	241d0001 	li	sp,1
+00080020 <_pass>:
+   80020:	241d0001 	li	sp,1
 
-00080028 <_fail>:
-   80028:	24020001 	li	v1,1
-   8002c:	409da800 	mtc0	sp,c0_staten
-   80030:	1402ffff 	bne	zero,v1,80030 <_fail+0x8>
+00080024 <_fail>:
+   80024:	24020001 	li	v1,1
+   80028:	409da800 	mtc0	sp,c0_staten
+   8002c:	1402ffff 	bne	zero,v1,8002c <_fail+0x8>
+   80030:	00000000 	nop
    80034:	00000000 	nop
    80038:	00000000 	nop
    8003c:	00000000 	nop
@@ -61,19 +61,15 @@ Disassembly of section .text:
    800c4:	00000000 	nop
    800c8:	00000000 	nop
    800cc:	00000000 	nop
-   800d0:	00000000 	nop
-   800d4:	00000000 	nop
-   800d8:	00000000 	nop
-   800dc:	00000000 	nop
 
 Disassembly of section .data:
 
-000800e0 <tdata_0>:
-   800e0:	deadbeef 	ldc3	$13,-16657(s4)
+000800d0 <tdata_0>:
+   800d0:	deadbeef 	ldc3	$13,-16657(s4)
 
-000800e4 <tdata_1>:
-   800e4:	abcdef01 	swl	t6,-4351(at)
+000800d4 <tdata_1>:
+   800d4:	abcdef01 	swl	t6,-4351(at)
 
-000800e8 <tdata_2>:
-   800e8:	0ff00ff0 	jal	fc03fc0 <_end+0xfb83ed0>
-   800ec:	00000000 	nop
+000800d8 <tdata_2>:
+   800d8:	0ff00ff0 	jal	fc03fc0 <_end+0xfb83ee0>
+   800dc:	00000000 	nop
